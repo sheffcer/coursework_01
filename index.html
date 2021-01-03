@@ -13,14 +13,15 @@
       <h1>План по изучению Vue.js</h1>
 
       <div class="steps">
-        <div class="steps-content">
-          Сюда необходимо вывести текст активного шага по его индексу
+        <div class="steps-content" >
+          <h2 >{{currentStep[0].title}}</h2>
+          <p>{{currentStep[0].text}}</p>
         </div>
         <ul class="steps-list">
-          <li class="steps-item done"><span>1</span> Шаг 1</li>
-          <li class="steps-item done"><span>2</span> Шаг 2</li>
+          <li :class="{ active: item.isActive}" class="steps-item" v-for="(item, index) in steps"><span>{{index + 1}}</span> Шаг {{index + 1}}</li>
+          <!-- <li class="steps-item done"><span>2</span> Шаг 2</li>
           <li class="steps-item active"><span>3</span> Шаг 3</li>
-          <li class="steps-item"><span>4</span> Шаг 4</li>
+          <li class="steps-item"><span>4</span> Шаг 4</li> -->
         </ul>
         <div>
           <button class="btn">Назад</button>
