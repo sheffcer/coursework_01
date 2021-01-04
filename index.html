@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Основы Vue</title>
     <link rel="stylesheet" href="theme.css" />
+    <style>
+      [v-cloak] {
+          display: none;
+      }
+    </style>
   </head>
   <body>
 
@@ -12,21 +17,24 @@
     <div class="card">
       <h1>План по изучению Vue.js</h1>
 
-      <div class="steps">
+      <div class="steps" v-cloak>
         <div class="steps-content" >
           <h2 >{{filteredStep[0].title}}</h2>
           <p>{{filteredStep[0].text}}</p>
         </div>
         <ul class="steps-list">
           <li
-          :class="{ active: item.isActive}"
           class="steps-item" v-for="(item, index) in steps"
+          :class="{ active: item.isActive, done: isDone}"
           @click = "setActive(index)"
           >
           <span>{{index + 1}}</span> Шаг {{index + 1}}</li>
         </ul>
         <div>
-          <button class="btn" :disabled="isButtonDisabled">Назад</button>
+          <button class="btn"
+          :disabled="isButtonDisabled"
+          @click = "prev()"
+          >Назад</button>
           <button
           class="btn primary"
           :disabled="islastStep"
