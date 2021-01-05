@@ -205,6 +205,7 @@ h3 {
 
 .steps-content {
   margin-bottom: 1.5rem;
+  height: 190px;
 }
 
 .steps-item.active span, .steps-item.done span {
