@@ -37,10 +37,14 @@
           >Назад</button>
           <button
           class="btn primary"
-          :disabled="islastStep"
+          :hidden="islastStep"
           @click = "nextOfFinish(index)"
           >Вперед</button>
-          <button @click="reset()">сбросить</button>
+          <button
+          :hidden="!islastStep"
+          class="btn"
+          @click="reset()"
+          >Закончить</button>
           <!-- {{isDone}} -->
         </div>
       </div>
