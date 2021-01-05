@@ -31,21 +31,25 @@
           <span>{{index + 1}}</span> Шаг {{index + 1}}</li>
         </ul>
         <div>
-          <button class="btn"
+          <button class="btn btn--prev"
           :disabled="isButtonDisabled"
           @click = "prev()"
           >Назад</button>
           <button
-          class="btn primary"
+          class="btn btn--next primary"
           :hidden="islastStep"
           @click = "nextOfFinish(index)"
           >Вперед</button>
           <button
           :hidden="!islastStep"
-          class="btn"
-          @click="reset()"
+          class="btn btn--continue"
+          @click="continueStep()"
           >Закончить</button>
-          <!-- {{isDone}} -->
+          <button
+          hidden
+          class="btn btn--reset"
+          @click="reset()"
+          >Начать заново</button>
         </div>
       </div>
     </div>

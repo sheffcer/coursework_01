@@ -52,6 +52,10 @@ const App = {
     reset() {
       // начать заного
       if (this.activeIndex === this.last) {
+          // document.querySelector('.btn--reset').hidden = true
+          document.querySelector('.btn--prev').hidden = false
+          document.querySelector('.btn--next').hidden = false
+          document.querySelector('.btn--reset').hidden = true
           this.activeIndex = 0
           let done = this.steps.forEach((item, i) => {
             if (i > 0) {
@@ -76,6 +80,13 @@ const App = {
       this.steps[this.activeIndex].isActive = false
       this.steps[index].isActive = true
       this.activeIndex = index
+    },
+    continueStep() {
+      document.querySelector('.btn--prev').hidden = true
+      document.querySelector('.btn--next').hidden = true
+      document.querySelector('.btn--continue').hidden = true
+      document.querySelector('.btn--reset').hidden = false
+      console.log('continue?')
     }
   },
   computed: {
