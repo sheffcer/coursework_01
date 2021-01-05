@@ -9,6 +9,7 @@ const App = {
       // isActive: true,
       // isDone: false,
       // isButtonDisabled: true,
+      defaultSteps: [],
       steps: [{
           title: 'Основы',
           text: 'В блоке вы познакомитесь со всеми основами Vue.js на практике. На протяжении блока мы напишем реактивное приложение, в процессе разработки которого разберем вся базу фреймворка.',
@@ -50,10 +51,15 @@ const App = {
     },
     reset() {
       // начать заного
-      let last = this.steps.length - 1
-      if (this.activeIndex === last) {
+      if (this.activeIndex === this.last) {
           this.activeIndex = 0
-
+          let done = this.steps.forEach((item, i) => {
+            if (i > 0) {
+              return item.isActive = false
+            } else if (i === 0) {
+              return item.isActive = true
+            }
+          })
       }
     },
     nextOfFinish() {
@@ -116,7 +122,7 @@ const App = {
       })
       // return done
       // return(done)
-      console.log(done)
+      // console.log(done)
     }
     // тут стоит определить несколько свойств:
     // 1. текущий выбранный шаг
