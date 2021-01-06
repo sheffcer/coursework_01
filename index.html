@@ -19,21 +19,21 @@
 
       <div class="steps" v-cloak>
         <div class="steps-content" >
-          <h2 >{{filteredStep[0].title}}</h2>
+          <!-- <h2 >{{filteredStep[0].title}}</h2> -->
           <p>{{filteredStep[0].text}}</p>
         </div>
         <ul class="steps-list">
           <li
           class="steps-item" v-for="(item, index) in steps"
-          :class="{ active: item.isActive, done: item.isDone}"
+          :class="{ active: index === activeIndex, done: index < activeIndex}"
           @click = "setActive(index)"
           >
-          <span>{{index + 1}}</span> Шаг {{index + 1}}</li>
+          <span>{{index + 1}}</span> Шаг {{item.title}}</li>
         </ul>
         <div>
           <button class="btn btn--prev"
           :disabled="isButtonDisabled"
-          @click = "prev()"
+          @click = "prev"
           >Назад</button>
           <button
           class="btn btn--next primary"
@@ -43,12 +43,12 @@
           <button
           :hidden="!islastStep"
           class="btn btn--continue"
-          @click="continueStep()"
+          @click="continueStep"
           >Закончить</button>
           <button
           hidden
           class="btn btn--reset"
-          @click="reset()"
+          @click="reset"
           >Начать заново</button>
         </div>
       </div>
