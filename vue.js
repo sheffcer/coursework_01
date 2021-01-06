@@ -10,7 +10,7 @@ const App = {
         title: 'Основы',
         text: 'В блоке вы познакомитесь со всеми основами Vue.js на практике. На протяжении блока мы напишем реактивное приложение, в процессе разработки которого разберем вся базу фреймворка.',
         isActive: true
-       },
+      },
       {
         title: 'Компоненты',
         text: 'Один из самых важных блоков в курсе, где вы узнаете все о компонентах. В блоке мы напишем 2 разных приложения и создадим более 5 различных UI компонентов как в реальной разработке. Блок расскажет про абсолютно все составляющие, которые есть в компонентах: взаимодействие, slots, асинхронные и динамические компоненты и тонна примеров.'
@@ -32,16 +32,7 @@ const App = {
   },
   methods: {
     prev() {
-      this.steps[this.activeIndex].isActive = false
-      this.steps[this.activeIndex - 1].isActive = true
       this.activeIndex = this.activeIndex - 1
-      // this.steps.forEach((item, i) => {
-      //   if (i < this.activeIndex) {
-      //     return item.isDone = true
-      //   } else if (i > this.activeIndex) {
-      //     return item.isDone = false
-      //   }
-      // })
     },
     reset() {
       if (this.activeIndex === this.last) {
@@ -64,6 +55,11 @@ const App = {
       this.steps[this.activeIndex].isActive = false
       this.steps[this.activeIndex + 1].isActive = true
       this.activeIndex = this.activeIndex + 1
+    },
+    setActive(index) {
+      this.steps[this.activeIndex].isActive = false
+      this.steps[index].isActive = true
+      this.activeIndex = index
       // this.steps.forEach((item, i) => {
       //   if (i < this.activeIndex) {
       //     return item.isDone = true
@@ -71,18 +67,6 @@ const App = {
       //     return item.isDone = false
       //   }
       // })
-    },
-    setActive(index) {
-      this.steps[this.activeIndex].isActive = false
-      this.steps[index].isActive = true
-      this.activeIndex = index
-      this.steps.forEach((item, i) => {
-        if (i < this.activeIndex) {
-          return item.isDone = true
-        } else if (i > this.activeIndex) {
-          return item.isDone = false
-        }
-      })
 
     },
     continueStep() {
@@ -93,15 +77,15 @@ const App = {
     }
   },
   computed: {
-    filteredStep() {
-      let allSteps = this.steps
-      let filtered = allSteps.filter((e) => {
-        if (e.isActive === true) {
-          return e
-        }
-      })
-      return filtered
-    },
+    // filteredStep() {
+    //   let allSteps = this.steps
+    //   let filtered = allSteps.filter((e) => {
+    //     if (e.isActive === true) {
+    //       return e
+    //     }
+    //   })
+    //   return filtered
+    // },
     currentStep() {
       return this.activeIndex
     },
@@ -119,10 +103,6 @@ const App = {
         return true
       }
     },
-     // тут стоит определить несколько свойств:
-    // 1. текущий выбранный шаг
-    // 2. выключена ли кнопка назад
-    // 3. находимся ли мы на последнем шаге
   }
 }
 
