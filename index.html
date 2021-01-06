@@ -25,7 +25,7 @@
         <ul class="steps-list">
           <li
           class="steps-item" v-for="(item, index) in steps"
-          :class="{ active: item.isActive, done: isDone}"
+          :class="{ active: item.isActive, done: item.isDone}"
           @click = "setActive(index)"
           >
           <span>{{index + 1}}</span> Шаг {{index + 1}}</li>
