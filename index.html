@@ -34,26 +34,26 @@
         <div>
           <button 
           ref="prev"
-          class="btn btn--prev"
+          class="btn"
           :disabled="isButtonDisabled"
           @click = "prev"
           >Назад</button>
           <button
           ref="next"
-          class="btn btn--next primary"
+          class="btn primary"
           :hidden="islastStep"
           @click = "nextOfFinish(index)"
           >Вперед</button>
           <button
           ref="continue"
           :hidden="!islastStep"
-          class="btn btn--continue"
+          class="btn"
           @click="continueStep"
           >Закончить</button>
           <button
           ref="reset"
           hidden
-          class="btn btn--reset"
+          class="btn"
           @click="reset"
           >Начать заново</button>
         </div>
