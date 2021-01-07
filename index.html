@@ -15,13 +15,12 @@
 
   <div class="container" id="app">
     <div class="card">
-      <h1>План по изучению Vue.js</h1>
+      <h1 ref="header">План по изучению Vue.js</h1>
 
       <div class="steps" v-cloak>
         <div class="steps-content" >
-          <!-- <p>{{filteredStep[0].text}}</p> -->
-          <p v-for="(item, index ) in steps">
-           <span v-show="index === activeIndex"> {{item.text}}</span>
+          <p v-show="index === activeIndex" v-for="(item, index ) in steps">
+            {{item.text}}
           </p>
         </div>
         <ul class="steps-list">
@@ -30,24 +29,29 @@
           :class="{ active: index === activeIndex, done: index < activeIndex}"
           @click = "setActive(index)"
           >
-          <span>{{index + 1}}</span> Шаг {{item.title}}</li>
+          <span>{{index + 1}}</span>{{item.title}}</li>
         </ul>
         <div>
-          <button class="btn btn--prev"
+          <button 
+          ref="prev"
+          class="btn btn--prev"
           :disabled="isButtonDisabled"
           @click = "prev"
           >Назад</button>
           <button
+          ref="next"
           class="btn btn--next primary"
           :hidden="islastStep"
           @click = "nextOfFinish(index)"
           >Вперед</button>
           <button
+          ref="continue"
           :hidden="!islastStep"
           class="btn btn--continue"
           @click="continueStep"
           >Закончить</button>
           <button
+          ref="reset"
           hidden
           class="btn btn--reset"
           @click="reset"

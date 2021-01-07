@@ -8,8 +8,7 @@ const App = {
       activeIndex: 0, // то, что позволяет определить текущий активный шиг,
       steps: [{
         title: 'Основы',
-        text: 'В блоке вы познакомитесь со всеми основами Vue.js на практике. На протяжении блока мы напишем реактивное приложение, в процессе разработки которого разберем вся базу фреймворка.',
-        isActive: true
+        text: 'В блоке вы познакомитесь со всеми основами Vue.js на практике. На протяжении блока мы напишем реактивное приложение, в процессе разработки которого разберем вся базу фреймворка.'
       },
       {
         title: 'Компоненты',
@@ -36,44 +35,25 @@ const App = {
     },
     reset() {
       if (this.activeIndex === this.last) {
-        document.querySelector('.btn--prev').hidden = false
-        document.querySelector('.btn--next').hidden = false
-        document.querySelector('.btn--reset').hidden = true
+        this.$refs.prev.hidden = false
+        this.$refs.next.hidden = false
+        this.$refs.reset.hidden = true
         this.activeIndex = 0
-        let done = this.steps.forEach((item, i) => {
-          if (i > 0) {
-            item.isActive = false
-            item.isDone = false
-          } else if (i === 0) {
-            item.isActive = true
-          }
-          return item
-        })
+
+        this.setActive(this.activeIndex)
       }
     },
     nextOfFinish() {
-      this.steps[this.activeIndex].isActive = false
-      this.steps[this.activeIndex + 1].isActive = true
       this.activeIndex = this.activeIndex + 1
     },
     setActive(index) {
-      this.steps[this.activeIndex].isActive = false
-      this.steps[index].isActive = true
       this.activeIndex = index
-      // this.steps.forEach((item, i) => {
-      //   if (i < this.activeIndex) {
-      //     return item.isDone = true
-      //   } else if (i > this.activeIndex) {
-      //     return item.isDone = false
-      //   }
-      // })
-
     },
     continueStep() {
-      document.querySelector('.btn--prev').hidden = true
-      document.querySelector('.btn--next').hidden = true
-      document.querySelector('.btn--continue').hidden = true
-      document.querySelector('.btn--reset').hidden = false
+      this.$refs.prev.hidden = true
+      this.$refs.next.hidden = true
+      this.$refs.continue.hidden = true
+      this.$refs.reset.hidden = false
     }
   },
   computed: {
