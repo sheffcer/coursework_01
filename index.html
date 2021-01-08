@@ -19,8 +19,8 @@
 
       <div class="steps" v-cloak>
         <div class="steps-content" >
-          <p v-show="index === activeIndex" v-for="(item, index ) in steps">
-            {{item.text}}
+          <p>
+            {{steps[activeIndex].text}}
           </p>
         </div>
         <ul class="steps-list">
@@ -32,27 +32,17 @@
           <span>{{index + 1}}</span>{{item.title}}</li>
         </ul>
         <div>
-          <button 
-          ref="prev"
+          <button
           class="btn"
           :disabled="isButtonDisabled"
           @click = "prev"
           >Назад</button>
           <button
-          ref="next"
           class="btn primary"
-          :hidden="islastStep"
           @click = "nextOfFinish(index)"
-          >Вперед</button>
+          >{{islastStep ? 'Закончить' : 'Вперед'}}</button>
           <button
-          ref="continue"
-          :hidden="!islastStep"
-          class="btn"
-          @click="continueStep"
-          >Закончить</button>
-          <button
-          ref="reset"
-          hidden
+          :hidden ="!islastStep"
           class="btn"
           @click="reset"
           >Начать заново</button>

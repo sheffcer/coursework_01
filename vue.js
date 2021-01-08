@@ -35,53 +35,35 @@ const App = {
     },
     reset() {
       if (this.activeIndex === this.last) {
-        this.$refs.prev.hidden = false
-        this.$refs.next.hidden = false
-        this.$refs.reset.hidden = true
         this.activeIndex = 0
-
         this.setActive(this.activeIndex)
       }
     },
     nextOfFinish() {
-      this.activeIndex = this.activeIndex + 1
+      if (this.activeIndex != this.last) {
+        this.activeIndex = this.activeIndex + 1
+      } else{
+        // isButtonDisabled
+        console.log('last step')
+
+      }
     },
     setActive(index) {
       this.activeIndex = index
     },
-    continueStep() {
-      this.$refs.prev.hidden = true
-      this.$refs.next.hidden = true
-      this.$refs.continue.hidden = true
-      this.$refs.reset.hidden = false
-    }
   },
   computed: {
-    // filteredStep() {
-    //   let allSteps = this.steps
-    //   let filtered = allSteps.filter((e) => {
-    //     if (e.isActive === true) {
-    //       return e
-    //     }
-    //   })
-    //   return filtered
-    // },
     currentStep() {
       return this.activeIndex
     },
     last() {
       return this.steps.length - 1
     },
-
     islastStep() {
-      return this.currentStep === this.last
+      return this.activeIndex === this.last
     },
     isButtonDisabled() {
-      if (this.activeIndex != 0) {
-        return false
-      } else {
-        return true
-      }
+     return this.activeIndex === 0
     },
   }
 }
