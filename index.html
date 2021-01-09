@@ -32,17 +32,19 @@
           <span>{{index + 1}}</span>{{item.title}}</li>
         </ul>
         <div>
-          <button
+          <button 
+          v-if="visible"
           class="btn"
           :disabled="isButtonDisabled"
           @click = "prev"
           >Назад</button>
           <button
+          v-if="visible"
           class="btn primary"
           @click = "nextOfFinish(index)"
           >{{islastStep ? 'Закончить' : 'Вперед'}}</button>
           <button
-          :hidden ="!islastStep"
+          v-else
           class="btn"
           @click="reset"
           >Начать заново</button>

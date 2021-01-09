@@ -6,6 +6,7 @@ const App = {
   data() {
     return {
       activeIndex: 0, // то, что позволяет определить текущий активный шиг,
+      visible: true,
       steps: [{
         title: 'Основы',
         text: 'В блоке вы познакомитесь со всеми основами Vue.js на практике. На протяжении блока мы напишем реактивное приложение, в процессе разработки которого разберем вся базу фреймворка.'
@@ -37,13 +38,14 @@ const App = {
       if (this.activeIndex === this.last) {
         this.activeIndex = 0
         this.setActive(this.activeIndex)
+        this.visible = !this.visible
       }
     },
     nextOfFinish() {
       if (this.activeIndex != this.last) {
         this.activeIndex = this.activeIndex + 1
       } else{
-        // isButtonDisabled
+        this.visible = !this.visible
         console.log('last step')
 
       }
@@ -53,9 +55,6 @@ const App = {
     },
   },
   computed: {
-    currentStep() {
-      return this.activeIndex
-    },
     last() {
       return this.steps.length - 1
     },
