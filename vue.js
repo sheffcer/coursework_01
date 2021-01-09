@@ -46,8 +46,6 @@ const App = {
         this.activeIndex = this.activeIndex + 1
       } else{
         this.visible = !this.visible
-        console.log('last step')
-
       }
     },
     setActive(index) {
